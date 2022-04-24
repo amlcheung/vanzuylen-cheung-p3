@@ -25,9 +25,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/user', userRouter);
 
-// app.get('*', function (req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.listen(process.env.PORT || 8000, () => {
   console.log('Starting server');
