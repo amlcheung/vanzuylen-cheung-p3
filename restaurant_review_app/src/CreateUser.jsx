@@ -15,7 +15,6 @@ export default function CreateUser(props) {
                 console.log("Created user");
                 console.log(response.data);
                 navigate('/');
-
             })
             .catch(error => console.log(error));
     }
