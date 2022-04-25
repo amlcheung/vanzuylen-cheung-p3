@@ -18,7 +18,7 @@ export default function NavBar(props) {
         Axios.post('/api/user/logout')
         .then(response => {
             navigate('/'); // sending it back to the home page and then reload the page
-            navigate(0);
+            navigate(0); // refreshing the whole page
         })
         .catch(error => console.log("Error logging out"));
     }
@@ -27,13 +27,15 @@ export default function NavBar(props) {
         return (<h1>
             {username} is logged in
             <button onClick={logout}>Logout</button>
+            <a href="/reviewEntry"><h1>Create Restaurant Review</h1></a>
         </h1>)
     }
 
     return (
         <div>
-             <a href='/login'><h1>Click here to login</h1></a>
-             <a href='/createUser'><h1>Create User</h1></a>
+             <a href='/'><h1>Home</h1></a>
+             <a href='/login'><h1>Login</h1></a>
+             <a href='/createUser'><h1>Create an Account</h1></a>
         </div>
    
    

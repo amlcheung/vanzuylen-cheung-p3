@@ -40,12 +40,6 @@ router.get('/isLoggedIn', auth_middleware, function(request, response) {
     return response.status(200).send({username: request.username});
 })
 
-
-
-
-
-
-
 router.get('/:username', function(request, response) {
 
     const username = request.params.username
