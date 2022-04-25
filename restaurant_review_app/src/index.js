@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-// import './index.css';
 import App from './App';
 import NavBar from './NavBar';
-// import RestaurantEntry from './RestaurantEntry';
 import Login from './Login';
 import CreateUser from './CreateUser';
+import ReviewEntry from './ReviewEntry';
 
   ReactDOM.render(
    <div>
@@ -16,6 +15,7 @@ import CreateUser from './CreateUser';
       <Route path={"/"} element={<App />}/>
       <Route path={"/login"} element={<Login />} />
       <Route path={"/createUser"} element={<CreateUser />} />
+      <Route path={"/restaurantEntry"} element={<ReviewEntry />}/>
     </Routes>
    </BrowserRouter>
       
