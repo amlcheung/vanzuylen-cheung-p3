@@ -1,8 +1,8 @@
 const express = require('express');
 const UserSchema = require('./model/user.schema');
 const UserModel = require('./model/user.model');
-//const jwt = require('jsonwebtoken');
-//const auth_middleware = require('./middleware/auth_middleware');
+const jwt = require('jsonwebtoken');
+// const auth_middleware = require('./middleware/auth_middleware');
 const router = express.Router();
 
 router.get('/', function(request, response) {
