@@ -10,7 +10,8 @@ const reviewRouter = require('./routes/review');
 
 // This is the default address for MongoDB.
 // Make sure MongoDB is running!
-const mongoEndpoint = process.env.MONGODB_URI || 'mongodb://127.0.0.1/restaurant_app';
+const mongoEndpoint = "mongodb+srv://ash-mad:ASHMAD@cluster0.ecwor.mongodb.net/restaurant_review_app?retryWrites=true&w=majority"
+//const mongoEndpoint = process.env.MONGODB_URI || 'mongodb://127.0.0.1/restaurant_review_app';
 // useNewUrlParser is not required, but the old parser is deprecated
 mongoose.connect(mongoEndpoint, { useNewUrlParser: true });
 

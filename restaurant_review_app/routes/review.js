@@ -34,12 +34,12 @@ router.get('/:reviewId', function(request, response) {
 
 
 router.post('/', auth_middleware, function(request, response) {
-    const reviewTitle = request.body.title;
+    const reviewTitle = request.body.reviewTitle;
     const restaurantReview = request.body.review;
     const restaurantCuisine = request.body.cuisine;
     const restaurantRating = request.body.rating;
-    const restaurantName = request.body.restaurantName;
-    const user = request.username;
+    const restaurantName = request.body.restaurant;
+    const user = request.body.username;
 
     if (!reviewTitle) {
         response.status(401).send("Missing Review Title argument");
