@@ -28,7 +28,7 @@ export default function Login(props) {
             </h5>
             <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
             <button onClick={createNewUser}>
-                Create User
+                Login
             </button>
         </div>
 
