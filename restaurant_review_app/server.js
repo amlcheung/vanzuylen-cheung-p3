@@ -22,12 +22,15 @@ db.on('error', console.error.bind(console, 'Error connecting to MongoDB:'));
 const cors = require('cors');
 const auth_middleware = require('./routes/middleware/auth_middleware');
 
+// (line 25-34) modifying the http request in a way that makes it easier for us to code with 
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+// cors: a security feature: can only send requests if the origin of the domain
+// matches the endpoint of the domain (cors minimizes this security)
 app.use(cors({
   origin: '*',
 }));
@@ -35,6 +38,7 @@ app.use(cors({
 
 app.use('/api/user', userRouter);
 
+// allows code to work with heroku
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });

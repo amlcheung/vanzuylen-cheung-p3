@@ -10,9 +10,10 @@ export default function Login(props) {
     const [password, setPassword] = useState('');
 
     function createNewUser() {
-        Axios.post('/api/user', {username, password})
+        Axios.post('/api/user/authenticate', {username, password})
             .then(response => {
                 navigate('/');
+                navigate(0); // refreshes the page
             })
             .catch(error => console.log(error));
     }
