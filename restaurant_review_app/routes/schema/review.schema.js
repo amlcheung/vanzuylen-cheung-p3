@@ -1,11 +1,11 @@
 const Schema = require('mongoose').Schema;
 
 const ReviewSchema = new Schema({
-    Title: String,
-    RestaurantName: String,
+    title: String,
+    restaurantName: String,
     reviewBlob: String,
     cuisine: String,
-    Rating: Number,
+    rating: Number,
     owner: String,
 }, {
     collection: 'reviews',

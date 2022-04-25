@@ -15,7 +15,7 @@ import ReviewEntry from './ReviewEntry';
       <Route path={"/"} element={<App />}/>
       <Route path={"/login"} element={<Login />} />
       <Route path={"/createUser"} element={<CreateUser />} />
-      <Route path={"/restaurantEntry"} element={<ReviewEntry />}/>
+      <Route path={"/reviewEntry"} element={<ReviewEntry />}/>
     </Routes>
    </BrowserRouter>
       
