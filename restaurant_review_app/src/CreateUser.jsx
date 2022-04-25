@@ -16,7 +16,6 @@ export default function CreateUser(props) {
                 console.log(response.data);
                 navigate('/');
                 navigate(0); // refreshes the page
-
             })
             .catch(error => console.log(error));
     }

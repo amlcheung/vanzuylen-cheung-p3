@@ -5,7 +5,7 @@ import App from './App';
 import NavBar from './NavBar';
 import Login from './Login';
 import CreateUser from './CreateUser';
-import ReviewEntry from './ReviewEntry';
+import RestaurantEntry from './RestaurantEntry';
 
   ReactDOM.render(
    <div>
@@ -15,7 +15,7 @@ import ReviewEntry from './ReviewEntry';
       <Route path={"/"} element={<App />}/>
       <Route path={"/login"} element={<Login />} />
       <Route path={"/createUser"} element={<CreateUser />} />
-      <Route path={"/reviewEntry"} element={<ReviewEntry />}/>
+      <Route path={"/restaurantEntry"} element={<RestaurantEntry />}/>
     </Routes>
    </BrowserRouter>
       

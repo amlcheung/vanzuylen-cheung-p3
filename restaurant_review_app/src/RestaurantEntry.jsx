@@ -5,9 +5,7 @@ import { useNavigate} from 'react-router';
 export default function ReviewEntry() {
 
     const navigate = useNavigate();
-    const [reviewTitle, setReviewTitle] = useState('');
-    const [restaurant, setRestaurant] = useState('');
-    const [review, setReview] = useState('');
+    const [restaurantName, setRestaurantName] = useState('');
     const [cuisine, setCuisine] = useState('');
     const [rating, setRating] = useState('');
     const [username, setUsername] = useState(null);
@@ -19,8 +17,8 @@ export default function ReviewEntry() {
             .catch(error => console.log("User is not logged in"));
     }, [])
 
-    function createNewReview() {
-        Axios.post('/api/review/', {reviewTitle, restaurant, review, cuisine, rating, username})
+    function createNewRestaurant() {
+        Axios.post('/api/restaurant/', {restaurantName, cuisine, rating, username})
             .then(response => {
                 navigate('/');
                 navigate(0); // refreshes the page
@@ -31,26 +29,18 @@ export default function ReviewEntry() {
     return (
         <div>
             <h5>
-                Review Title:
+                Restaurant Name:
             </h5>
-            <input value={reviewTitle} onChange={e => setReviewTitle(e.target.value)} />
-            <h5>
-                Restaurant:
-            </h5>
-            <input value={restaurant} onChange={e => setRestaurant(e.target.value)} />
-            <h5>
-                Review:
-            </h5>
-            <input value={review} onChange={e => setReview(e.target.value)} />
+            <input value={restaurantName} onChange={e => setRestaurantName(e.target.value)} />
             <h5>
                 Cuisine:
             </h5>
             <input value={cuisine} onChange={e => setCuisine(e.target.value)} />
             <h5>
-                Rating:
+                Michelin Stars:
             </h5>
             <input value={rating} onChange={e => setRating(e.target.value)} />
-            <button onClick={createNewReview}>
+            <button onClick={createNewRestaurant}>
                 Submit
             </button>
         </div>

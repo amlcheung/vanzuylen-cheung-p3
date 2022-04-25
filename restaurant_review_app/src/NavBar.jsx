@@ -27,7 +27,7 @@ export default function NavBar(props) {
         return (<h1>
             {username} is logged in
             <button onClick={logout}>Logout</button>
-            <a href="/reviewEntry"><h1>Create Restaurant Review</h1></a>
+            <a href="/restaurantEntry"><h1>Create a Restaurant</h1></a>
         </h1>)
     }
 

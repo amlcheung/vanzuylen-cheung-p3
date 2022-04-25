@@ -6,10 +6,11 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 const userRouter = require('./routes/user');
-const reviewRouter = require('./routes/review');
+const restaurantRouter = require('./routes/restaurant');
 
 // This is the default address for MongoDB.
 // Make sure MongoDB is running!
+// Needs to change:
 const mongoEndpoint = "mongodb+srv://ash-mad:ASHMAD@cluster0.ecwor.mongodb.net/restaurant_review_app?retryWrites=true&w=majority"
 //const mongoEndpoint = process.env.MONGODB_URI || 'mongodb://127.0.0.1/restaurant_review_app';
 // useNewUrlParser is not required, but the old parser is deprecated
@@ -39,7 +40,7 @@ app.use(cors({
 
 
 app.use('/api/user', userRouter);
-app.use('/api/review', reviewRouter);
+app.use('/api/restaurant', restaurantRouter);
 
 // allows code to work with heroku
 app.get('*', function (req, res) {
