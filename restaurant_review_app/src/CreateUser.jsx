@@ -15,10 +15,12 @@ export default function CreateUser(props) {
                 console.log("Created user");
                 console.log(response.data);
                 navigate('/');
+                navigate(0); // refreshes the page
 
             })
             .catch(error => console.log(error));
     }
+
 
     return (
         <div>
@@ -32,7 +34,7 @@ export default function CreateUser(props) {
             </h5>
             <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
             <button onClick={createNewUser}>
-                Create User
+                Login with New User
             </button>
         </div>
 

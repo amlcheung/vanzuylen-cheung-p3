@@ -17,7 +17,8 @@ export default function NavBar(props) {
     function logout() {
         Axios.post('/api/user/logout')
         .then(response => {
-            navigate('/')
+            navigate('/'); // sending it back to the home page and then reload the page
+            navigate(0);
         })
         .catch(error => console.log("Error logging out"));
     }
