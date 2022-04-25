@@ -2,7 +2,7 @@ const express = require('express');
 
 const UserModel = require('./model/user.model');
 const jwt = require('jsonwebtoken');
-const auth_middleware = require('./middleware/auth_middleware');
+// const auth_middleware = require('./middleware/auth_middleware');
 const router = express.Router();
 
 router.get('/:username', function(request, response) {
