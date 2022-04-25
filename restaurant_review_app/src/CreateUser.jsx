@@ -10,7 +10,7 @@ export default function CreateUser(props) {
     const [password, setPassword] = useState('');
 
     function createNewUser() {
-        Axios.post('/api/user', {username, password})
+        Axios.post('/api/user/', {username, password})
             .then(response => {
                 console.log("Created user");
                 console.log(response.data);

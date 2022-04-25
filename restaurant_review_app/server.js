@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -18,9 +19,18 @@ const db = mongoose.connection;
 // This will create the connection, and throw an error if it doesn't work
 db.on('error', console.error.bind(console, 'Error connecting to MongoDB:'));
 
+const cors = require('cors');
+const auth_middleware = require('./routes/middleware/auth_middleware');
+
 app.use(express.static(path.join(__dirname, 'build')));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+app.use(cors({
+  origin: '*',
+}));
 
 
 app.use('/api/user', userRouter);
