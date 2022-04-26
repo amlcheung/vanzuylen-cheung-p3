@@ -20,7 +20,7 @@ function getAllReviews() {
 
 function getReviewByRestaurantId(RestaurantId) {
     return ReviewModel.find({
-        RestaurantId: RestaurantId
+        restaurantID: RestaurantId
     }).exec();
 }
 

@@ -7,9 +7,9 @@ export default function RestaurantPage(props) {
     const [restaurant, setRestaurant] = useState(undefined);
     const [username, setUsername] = useState(null);
     const [review, setReview] = useState(null);
+    const [allReviews, setAllReviews] = useState([]);
 
     const params = useParams();
-    console.log("params");
 
     useEffect(function() {
         Axios.get('/api/user/isLoggedIn')
@@ -31,7 +31,29 @@ export default function RestaurantPage(props) {
                 console.log(response.data);
             })
             .catch(error => console.log(error));
+        const reviewInput = document.getElementById('theReview');
+
+        reviewInput.value = '';
     }
+
+    function getReviewsForRestaurant() {
+        Axios.get('/api/review/' + params.restaurantId)
+        .then(function(response) {
+            setAllReviews(response.data)
+        })
+        .catch(error => console.log(error));
+    }
+    useEffect(getReviewsForRestaurant, []);
+    
+    const reviewComponent = [];
+    for (let review of allReviews) {
+        reviewComponent.push(<div>
+            <h5>Date: {review.reviewDate}</h5>
+            <h5>{review.review}</h5>
+            <h5>User: {review.owner}</h5>
+        </div>)
+    }
+
 
     if (!restaurant) {
         return (<div>
@@ -39,6 +61,7 @@ export default function RestaurantPage(props) {
         </div>)
     }
 
+    // if logged in, return this
     if (username) {
         return ( 
         <div>
@@ -54,14 +77,16 @@ export default function RestaurantPage(props) {
             <h5>
                 Review this Restaurant:
             </h5>
-            <input value={review} onChange={e => setReview(e.target.value)} />
+            <textarea id= "theReview" rows = "10" cols = "60" onChange={e => setReview(e.target.value)}></textarea>
             <button onClick={createReview}>
                 Submit Review
             </button>
+            {reviewComponent}
         </div>
         )
     }
 
+    // if not logged in 
     return (
         <div>
             <h1>
@@ -71,8 +96,9 @@ export default function RestaurantPage(props) {
                 Cuisine: {restaurant.cuisine}
             </h2>
             <h2>
-                Michilen Statrs: {restaurant.rating}
+                Michilen Stars: {restaurant.rating}
             </h2>
+            {reviewComponent}
 
         </div>
     )

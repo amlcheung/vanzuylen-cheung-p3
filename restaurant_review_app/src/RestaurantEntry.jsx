@@ -26,6 +26,8 @@ export default function ReviewEntry() {
             .catch(error => console.log(error));
     }
 
+    
+
     return (
         <div>
             <h5>
@@ -43,6 +45,7 @@ export default function ReviewEntry() {
             <button onClick={createNewRestaurant}>
                 Submit
             </button>
+
         </div>
 
     )   
