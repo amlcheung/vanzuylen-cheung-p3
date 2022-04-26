@@ -18,11 +18,36 @@ router.get('/', function(request, response) {
 router.get('/:restaurantId', function(request, response) {
 
     const restaurantId = request.params.restaurantId
-    console.log("inside restaurantID")
 
     return RestaurantModel.getRestaurantById(restaurantId)
         .then(restaurant => {
                 response.status(200).send(restaurant);
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
+})
+
+router.get('/:owner', function(request, response) {
+
+    const owner = request.params.owner
+
+    return RestaurantModel.getRestaurantByUsername(owner)
+        .then(restaurantsOwned => {
+                response.status(200).send(restaurantsOwned);
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
+})
+
+router.get('/:name', function(request, response) {
+
+    const name = request.params.name
+
+    return RestaurantModel.getRestaurantByName(name)
+        .then(restaurantsName => {
+                response.status(200).send(restaurantsName);
         })
         .catch(error => {
             response.status(400).send(error);

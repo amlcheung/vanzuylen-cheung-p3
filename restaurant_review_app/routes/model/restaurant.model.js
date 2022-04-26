@@ -21,11 +21,17 @@ function getAllRestaurants() {
 function getRestaurantById(id) {
     return RestaurantModel.findById(id).exec();
 }
+function getRestaurantByName(name) {
+    return RestaurantModel.find({
+        name: name
+    }).exec();
+}
 
 module.exports = {
     createRestaurant,
     getRestaurantByUsername,
     getAllRestaurants,
     getRestaurantById,
+    getRestaurantByName,
 }
 

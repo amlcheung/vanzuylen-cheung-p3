@@ -2,7 +2,6 @@ import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 
-// http://localhost:3000/home/625fcade9c10f6ba1d10faeb
 export default function RestaurantPage(props) {
 
     const [restaurant, setRestaurant] = useState(undefined);
