@@ -12,12 +12,14 @@ export default function RestaurantPage(props) {
 
     const params = useParams();
 
+    // Checks if user is logged in 
     useEffect(function() {
         Axios.get('/api/user/isLoggedIn')
             .then(response => setUsername(response.data.username))
             .catch(error => console.log("User is not logged in"));
     }, [])
 
+    // Gets the restaurant and sets the restaurant Id
     useEffect(function() {
         Axios.get('/api/restaurant/' + params.restaurantId)
             .then(response => setRestaurant(response.data))
@@ -25,6 +27,7 @@ export default function RestaurantPage(props) {
         setRestaurantId(params.restaurantId);
     },[]);
 
+    // Creates a new review
     function createReview() {
         Axios.post('/api/review/', {username, restaurantId, review})
             .then(response => {
@@ -36,6 +39,7 @@ export default function RestaurantPage(props) {
         reviewInput.value = '';
     }
 
+    // Gets reviews for a specific restaurant
     function getReviewsForRestaurant() {
         Axios.get('/api/review/' + params.restaurantId)
         .then(function(response) {
@@ -51,6 +55,8 @@ export default function RestaurantPage(props) {
             <h5>Date: {review.reviewDate}</h5>
             <h5>{review.review}</h5>
             <h5>User: {review.owner}</h5>
+            <h5>Restaurant Id: {review.restaurantId}</h5>
+
         </div>)
     }
 
@@ -73,6 +79,9 @@ export default function RestaurantPage(props) {
             </h2>
             <h2>
                 Michilen Stars: {restaurant.rating}
+            </h2>
+            <h2>
+               ID: {restaurant._id}
             </h2>
             <h5>
                 Review this Restaurant:
@@ -97,6 +106,9 @@ export default function RestaurantPage(props) {
             </h2>
             <h2>
                 Michilen Stars: {restaurant.rating}
+            </h2>
+            <h2>
+               ID: {restaurant._id}
             </h2>
             {reviewComponent}
 
