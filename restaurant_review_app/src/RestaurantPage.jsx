@@ -56,7 +56,7 @@ export default function RestaurantPage(props) {
             </h5>
             <input value={review} onChange={e => setReview(e.target.value)} />
             <button onClick={createReview}>
-                Sumbit Review
+                Submit Review
             </button>
         </div>
         )

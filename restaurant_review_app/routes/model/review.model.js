@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const RestaurantSchema = require('../schema/review.schema');
+const ReviewSchema = require('../schema/review.schema');
 
 const ReviewModel = mongoose.model("Review", ReviewSchema);
 

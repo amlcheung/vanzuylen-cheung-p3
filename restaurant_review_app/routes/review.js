@@ -1,5 +1,5 @@
 const express = require('express');
-const RestaurantModel = require('./model/review.model');
+const ReviewModel = require('./model/review.model');
 const jwt = require('jsonwebtoken');
 const auth_middleware = require('./middleware/auth_middleware');
 const router = express.Router();
@@ -44,14 +44,14 @@ router.get('/:owner', function(request, response) {
 })
 
 router.post('/', auth_middleware, function(request, response) {
-    const restaurantId = request.body.restaurantId;
-    const review = request.body.review;
+    const restaurantId = request.body.restaurant;
+    const thisReview = request.body.review;
     const user = request.username;
 
 
     if (!restaurantId) {
         response.status(401).send("Missing Restaurant ID argument");
-    } else if (!review) {
+    } else if (!thisReview) {
         response.status(401).send("Missing Review");
     } else if (!user) {
         response.status(401).send("Missing User argument");
@@ -59,7 +59,7 @@ router.post('/', auth_middleware, function(request, response) {
 
     const review = {
         restaurantId: restaurantId,
-        review: review,
+        review: thisReview,
         owner: user,
     }
 
