@@ -7,6 +7,7 @@ export default function RestaurantPage(props) {
 
     const [restaurant, setRestaurant] = useState(undefined);
     const params = useParams();
+    console.log("params");
 
     useEffect(() => {
         Axios.get('/api/restaurant/' + params.restaurantId)
@@ -24,7 +25,7 @@ export default function RestaurantPage(props) {
     return (
         <div>
             <h1>
-                Restaurant: {restaurant.restaurantName} 
+                Restaurant: {restaurant.name} 
             </h1>
             <h2>
                 Cuisine: {restaurant.cuisine}

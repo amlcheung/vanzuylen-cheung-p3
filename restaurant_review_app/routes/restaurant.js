@@ -5,11 +5,9 @@ const auth_middleware = require('./middleware/auth_middleware');
 const router = express.Router();
 
 
-router.get('/', auth_middleware, function(request, response) {
-    console.log("here")
+router.get('/', function(request, response) {
     return RestaurantModel.getAllRestaurants()
         .then(allRestaurants => {
-            console.log("here")
             response.status(200).send(allRestaurants)
         })
         .catch(error => {
@@ -20,8 +18,9 @@ router.get('/', auth_middleware, function(request, response) {
 router.get('/:restaurantId', function(request, response) {
 
     const restaurantId = request.params.restaurantId
+    console.log("inside restaurantID")
 
-    return RestaurantModel.getReviewById(restaurantId)
+    return RestaurantModel.getRestaurantById(restaurantId)
         .then(restaurant => {
                 response.status(200).send(restaurant);
         })

@@ -21,7 +21,7 @@ export default function App() {
   for(let restaurant of restaurants) {
     console.log(restaurant);
     restaurantComponent.push(<div>
-      <a href={'/' + restaurant._id}><h1>{restaurant.name}</h1></a>
+      <a href={'/restaurant/' + restaurant._id}><h1>{restaurant.name}</h1></a>
       <h5>Cuisine: {restaurant.cuisine}</h5>
       <h5>Michilen Stars: {restaurant.rating}</h5>
       </div>)

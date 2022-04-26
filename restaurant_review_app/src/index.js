@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import Login from './Login';
 import CreateUser from './CreateUser';
 import RestaurantEntry from './RestaurantEntry';
+import RestaurantPage from './RestaurantPage';
 
   ReactDOM.render(
    <div>
@@ -16,6 +17,7 @@ import RestaurantEntry from './RestaurantEntry';
       <Route path={"/login"} element={<Login />} />
       <Route path={"/createUser"} element={<CreateUser />} />
       <Route path={"/restaurantEntry"} element={<RestaurantEntry />}/>
+      <Route path={"/restaurant/:restaurantId"} element={<RestaurantPage />}/>
     </Routes>
    </BrowserRouter>
       
