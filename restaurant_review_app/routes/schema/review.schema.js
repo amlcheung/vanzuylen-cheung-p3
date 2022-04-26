@@ -1,7 +1,7 @@
 const Schema = require('mongoose').Schema;
 
 const ReviewSchema = new Schema({
-    restaurantID: Number,
+    restaurantId: String,
     review: String,
     reviewDate: {
         type: Date,

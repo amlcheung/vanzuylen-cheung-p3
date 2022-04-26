@@ -44,10 +44,12 @@ router.get('/:owner', function(request, response) {
 })
 
 router.post('/', auth_middleware, function(request, response) {
-    const restaurantId = request.body.restaurantID;
+    const restaurantId = request.body.restaurantId;
     const thisReview = request.body.review;
     const user = request.username;
-
+    console.log(restaurantId);
+    console.log(thisReview);
+    console.log(user);
 
     if (!restaurantId) {
         response.status(401).send("Missing Restaurant ID argument");
@@ -62,6 +64,8 @@ router.post('/', auth_middleware, function(request, response) {
         review: thisReview,
         owner: user,
     }
+
+    console.log(review);
 
     return ReviewModel.createReview(review)
         .then(dbResponse => {

@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 export default function RestaurantPage(props) {
 
     const [restaurant, setRestaurant] = useState(undefined);
+    const [restaurantId, setRestaurantId] = useState(undefined);
     const [username, setUsername] = useState(null);
     const [review, setReview] = useState(null);
     const [allReviews, setAllReviews] = useState([]);
@@ -21,10 +22,11 @@ export default function RestaurantPage(props) {
         Axios.get('/api/restaurant/' + params.restaurantId)
             .then(response => setRestaurant(response.data))
             .catch(error => console.log(error));
+        setRestaurantId(params.restaurantId);
     },[]);
 
     function createReview() {
-        Axios.post('/api/review/', {username, restaurant, review})
+        Axios.post('/api/review/', {username, restaurantId, review})
             .then(response => {
                 console.log("Created Review");
                 console.log(response.data);
