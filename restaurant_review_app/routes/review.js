@@ -18,9 +18,9 @@ router.get('/', function(request, response) {
 // Gets reviews for a restaurant
 router.get('/:restaurantId', function(request, response) {
 
-    const restaurantId = request.params.restaurantId
+    const restaurantId = request.params.restaurantID;
 
-    return ReviewModel.getReviewsByResaurantId(restaurantId)
+    return ReviewModel.getReviewByRestaurantId(restaurantId)
         .then(reviews => {
                 response.status(200).send(reviews);
         })
