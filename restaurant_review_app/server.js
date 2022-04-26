@@ -7,6 +7,7 @@ const app = express();
 
 const userRouter = require('./routes/user');
 const restaurantRouter = require('./routes/restaurant');
+const reviewRouter = require('./routes/review');
 
 // This is the default address for MongoDB.
 // Make sure MongoDB is running!
@@ -41,6 +42,7 @@ app.use(cors({
 
 app.use('/api/user', userRouter);
 app.use('/api/restaurant', restaurantRouter);
+app.use('/api/review', reviewRouter);
 
 // allows code to work with heroku
 app.get('*', function (req, res) {
