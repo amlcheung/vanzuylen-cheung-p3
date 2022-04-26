@@ -44,7 +44,7 @@ router.get('/:owner', function(request, response) {
 })
 
 router.post('/', auth_middleware, function(request, response) {
-    const restaurantId = request.body.restaurant;
+    const restaurantId = request.body.restaurantID;
     const thisReview = request.body.review;
     const user = request.username;
 

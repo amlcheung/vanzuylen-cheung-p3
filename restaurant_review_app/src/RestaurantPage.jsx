@@ -7,9 +7,7 @@ export default function RestaurantPage(props) {
     const [restaurant, setRestaurant] = useState(undefined);
     const [username, setUsername] = useState(null);
     const [review, setReview] = useState(null);
-
     const params = useParams();
-    console.log("params");
 
     useEffect(function() {
         Axios.get('/api/user/isLoggedIn')
@@ -17,11 +15,10 @@ export default function RestaurantPage(props) {
             .catch(error => console.log("User is not logged in"));
     }, [])
 
-    useEffect(() => {
+    useEffect(function() {
         Axios.get('/api/restaurant/' + params.restaurantId)
-            .then(function(response) {
-            setRestaurant(response.data);
-            })
+            .then(response => setRestaurant(response.data))
+            .catch(error => console.log(error));
     },[]);
 
     function createReview() {
@@ -31,6 +28,8 @@ export default function RestaurantPage(props) {
                 console.log(response.data);
             })
             .catch(error => console.log(error));
+        const reviewInput = document.getElementById('theReview');
+        reviewInput.value = '';
     }
 
     if (!restaurant) {
@@ -54,7 +53,7 @@ export default function RestaurantPage(props) {
             <h5>
                 Review this Restaurant:
             </h5>
-            <input value={review} onChange={e => setReview(e.target.value)} />
+            <textarea id= "theReview" rows = "10" cols = "60" onChange={e => setReview(e.target.value)}></textarea>            
             <button onClick={createReview}>
                 Submit Review
             </button>
