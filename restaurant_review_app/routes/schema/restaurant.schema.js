@@ -1,7 +1,6 @@
 const Schema = require('mongoose').Schema;
 
 const RestaurantSchema = new Schema({
-    title: String,
     name: String,
     cuisine: String,
     rating: Number,

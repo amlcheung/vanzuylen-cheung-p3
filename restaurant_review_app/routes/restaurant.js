@@ -6,11 +6,10 @@ const router = express.Router();
 
 
 router.get('/', auth_middleware, function(request, response) {
-
-    const username = request.username;
-
-    return RestaurantModel.getReviewsByUsername(username)
+    console.log("here")
+    return RestaurantModel.getAllRestaurants()
         .then(allRestaurants => {
+            console.log("here")
             response.status(200).send(allRestaurants)
         })
         .catch(error => {
@@ -46,7 +45,7 @@ router.post('/', auth_middleware, function(request, response) {
     }
 
     const restaurant = {
-        restaurantName: restaurantName,
+        name: restaurantName,
         cuisine: restaurantCuisine,
         rating: restaurantRating,
         owner: user,

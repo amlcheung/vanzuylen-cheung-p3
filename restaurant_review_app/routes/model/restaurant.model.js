@@ -14,7 +14,6 @@ function getRestaurantByUsername(username) {
     }).exec();
 }
 
-
 function getAllRestaurants() {
     return RestaurantModel.find().exec();
 }
