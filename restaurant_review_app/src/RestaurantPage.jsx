@@ -116,6 +116,8 @@ export default function RestaurantPage(props) {
             {reviewComponent}
         </div>
         )
+
+        
     }
 
     // if not logged in 

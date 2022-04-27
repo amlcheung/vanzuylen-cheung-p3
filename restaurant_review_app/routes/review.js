@@ -76,6 +76,20 @@ router.post('/', auth_middleware, function(request, response) {
         })
 });
 
+// update a the review attribute of a review
+router.put('/:reviewId', function(request, response) {
+    const newReview = request.body.review;
+    const id = request.params.reviewId;
+    return ReviewModel.updateReviewByReviewId(id, newReview)
+        .then(dbResponse => {
+            response.status(200).send(dbResponse);
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
+});
+
+
 // Delete one review
 router.delete('/:reviewId', function(request, response) {
 
@@ -103,5 +117,7 @@ router.delete('/:restaurantId', function(request, response) {
             response.status(400).send(error);
         })
 })
+
+
 
 module.exports = router;

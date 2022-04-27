@@ -24,6 +24,12 @@ function getReviewByRestaurantId(RestaurantId) {
     }).exec();
 }
 
+function updateReviewByReviewId(id, updatedReview) {
+    return ReviewModel.findByIdAndUpdate(id, {
+        review: updatedReview
+    }).exec();
+}
+
 function deleteReviewByRestaurantId(RestaurantId) {
     return ReviewModel.deleteMany({
         restaurantId: RestaurantId
@@ -39,6 +45,7 @@ module.exports = {
     getReviewByUsername,
     getAllReviews,
     getReviewByRestaurantId,
-    deleteReviewByReviewId,
+    updateReviewByReviewId,
     deleteReviewByRestaurantId,
+    deleteReviewByReviewId,
 }
