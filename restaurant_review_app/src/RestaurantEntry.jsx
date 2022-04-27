@@ -20,13 +20,11 @@ export default function ReviewEntry() {
     function createNewRestaurant() {
         Axios.post('/api/restaurant/', {restaurantName, cuisine, rating, username})
             .then(response => {
-                navigate('/'); // needs to navigate to the new restaurant page
+                navigate('/restaurant/' + response.data._id); // needs to navigate to the new restaurant page
                 navigate(0); // refreshes the page
             })
             .catch(error => console.log(error));
     }
-
-    
 
     return (
         <div>

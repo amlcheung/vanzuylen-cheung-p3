@@ -34,12 +34,13 @@ export default function RestaurantPage(props) {
                 console.log(response.data);
             })
             .catch(error => console.log(error));
+            //setReview("");
         const reviewInput = document.getElementById('theReview');
         reviewInput.value = '';
         getReviewsForRestaurant();
     }
 
-    /*
+    
     // Deletes a review
     function deleteReview(reviewId) {
         //console.log(reviewId);
@@ -51,7 +52,7 @@ export default function RestaurantPage(props) {
             .catch(error => console.log(error));
         getReviewsForRestaurant();
     }
-*/
+
     // Gets reviews for a specific restaurant
     function getReviewsForRestaurant() {
         Axios.get('/api/review/' + params.restaurantId)
@@ -61,7 +62,7 @@ export default function RestaurantPage(props) {
         .catch(error => console.log(error));
     }
    // onClick={deleteReview(review._id)}
-    getReviewsForRestaurant()
+    useEffect(() => getReviewsForRestaurant(), [])
     // Creates the review Compnent
     const reviewComponent = [];
     for (let review of allReviews) {
@@ -71,7 +72,7 @@ export default function RestaurantPage(props) {
                 <h5>{review.review}</h5>
                 <h5>User: {review.owner}</h5>
                 <h5>Restaurant Id: {review.restaurantId}</h5>
-                <button id = "delete">Delete this Review</button>
+                <button id = "delete" onClick={()=>deleteReview(review._id)}>Delete this Review</button>
             </div>)
         } else {
         reviewComponent.push(<div>
