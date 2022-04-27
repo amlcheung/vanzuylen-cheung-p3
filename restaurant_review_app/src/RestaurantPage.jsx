@@ -9,7 +9,6 @@ export default function RestaurantPage(props) {
     const [username, setUsername] = useState(null);
     const [review, setReview] = useState(null);
     const [allReviews, setAllReviews] = useState([]);
-
     const params = useParams();
 
     // Checks if user is logged in 
@@ -40,6 +39,19 @@ export default function RestaurantPage(props) {
         getReviewsForRestaurant();
     }
 
+    /*
+    // Deletes a review
+    function deleteReview(reviewId) {
+        //console.log(reviewId);
+        Axios.delete('/api/review/'+ reviewId)
+            .then(response => {
+                console.log("Deleted Review");
+                console.log(response.data);
+            })
+            .catch(error => console.log(error));
+        getReviewsForRestaurant();
+    }
+*/
     // Gets reviews for a specific restaurant
     function getReviewsForRestaurant() {
         Axios.get('/api/review/' + params.restaurantId)
@@ -48,18 +60,27 @@ export default function RestaurantPage(props) {
         })
         .catch(error => console.log(error));
     }
-    //useEffect(getReviewsForRestaurant, []);
-   getReviewsForRestaurant()
-
+   // onClick={deleteReview(review._id)}
+    getReviewsForRestaurant()
+    // Creates the review Compnent
     const reviewComponent = [];
     for (let review of allReviews) {
+        if (review.owner === username){
+            reviewComponent.push(<div>
+                <h5>Date: {review.reviewDate}</h5>
+                <h5>{review.review}</h5>
+                <h5>User: {review.owner}</h5>
+                <h5>Restaurant Id: {review.restaurantId}</h5>
+                <button id = "delete">Delete this Review</button>
+            </div>)
+        } else {
         reviewComponent.push(<div>
             <h5>Date: {review.reviewDate}</h5>
             <h5>{review.review}</h5>
             <h5>User: {review.owner}</h5>
             <h5>Restaurant Id: {review.restaurantId}</h5>
-
         </div>)
+        }
     }
 
 
@@ -89,7 +110,7 @@ export default function RestaurantPage(props) {
                 Review this Restaurant:
             </h5>
             <textarea id= "theReview" rows = "10" cols = "60" onChange={e => setReview(e.target.value)}></textarea>
-            <button onClick={createReview}>
+            <button id = "create" onClick={createReview}>
                 Submit Review
             </button>
             {reviewComponent}

@@ -76,4 +76,32 @@ router.post('/', auth_middleware, function(request, response) {
         })
 });
 
+// Delete one review
+router.delete('/:reviewId', function(request, response) {
+
+    const reviewToDelete = request.params.reviewId
+
+    return ReviewModel.deleteReviewByReviewId(reviewToDelete)
+        .then(reviewDeleted => {
+                response.status(200).send(reviewDeleted);
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
+})
+
+// Delete all reviews from a restaurant
+router.delete('/:restaurantId', function(request, response) {
+
+    const restaurantId = request.params.restaurantId
+
+    return ReviewModel.deleteReviewByRestaurantId(restaurantId)
+        .then(reviewsDeleted => {
+                response.status(200).send(reviewsDeleted);
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
+})
+
 module.exports = router;
