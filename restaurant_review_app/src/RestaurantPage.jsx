@@ -40,7 +40,6 @@ export default function RestaurantPage(props) {
         getReviewsForRestaurant();
     }
 
-    
     // Deletes a review
     function deleteReview(reviewId) {
         //console.log(reviewId);
@@ -61,8 +60,8 @@ export default function RestaurantPage(props) {
         })
         .catch(error => console.log(error));
     }
-   // onClick={deleteReview(review._id)}
-    useEffect(() => getReviewsForRestaurant(), [])
+    getReviewsForRestaurant()
+    //useEffect(() => getReviewsForRestaurant(), [])
     // Creates the review Compnent
     const reviewComponent = [];
     for (let review of allReviews) {
