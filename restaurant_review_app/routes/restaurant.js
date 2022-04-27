@@ -47,7 +47,7 @@ router.get('/:name', function(request, response) {
 
     return RestaurantModel.getRestaurantByName(name)
         .then(restaurantsName => {
-                response.status(200).send(restaurantsName);
+            response.status(200).send(restaurantsName);
         })
         .catch(error => {
             response.status(400).send(error);
@@ -83,5 +83,47 @@ router.post('/', auth_middleware, function(request, response) {
             response.status(400).send(error)
         })
 });
+
+// update a restaurant attributes: name, cuisine and rating. Will keep the
+// original info for an attribute if the user doesn't make any changes to it
+router.put('/:restaurantId', function(request, response) {
+    const id = request.params.restaurantId;
+    let Name = request.body.name;
+    let Cuisine = request.body.cuisine;
+    let Rating = parseInt(request.body.rating);
+
+    if (Name === undefined) {
+        Name = request.name;
+    }
+    if (Cuisine === undefined) {
+        Cuisine = request.cuisine;
+    }
+    if (Rating === undefined) {
+        Rating = request.rating;
+    }
+    
+    return RestaurantModel.updateRestaurantByRestaurantId(id, Name, Cuisine, Rating)
+        .then(dbResponse => {
+            response.status(200).send(dbResponse);
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
+})
+
+router.delete('/:restaurantId', function(request, response) {
+    const restaurantName = request.params.name;
+
+    return RestaurantModel.deleteRestaurant(restaurantName)
+    .then(dpResponse => {
+        response.status(200).send(dpResponse);
+    })
+    .catch(error => {
+        response.status(400).send(error);
+    })
+
+
+
+})
 
 module.exports = router;
