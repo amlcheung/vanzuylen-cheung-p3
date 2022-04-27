@@ -37,6 +37,7 @@ export default function RestaurantPage(props) {
             .catch(error => console.log(error));
         const reviewInput = document.getElementById('theReview');
         reviewInput.value = '';
+        getReviewsForRestaurant();
     }
 
     // Gets reviews for a specific restaurant
@@ -47,8 +48,9 @@ export default function RestaurantPage(props) {
         })
         .catch(error => console.log(error));
     }
-    useEffect(getReviewsForRestaurant, []);
-    
+    //useEffect(getReviewsForRestaurant, []);
+   getReviewsForRestaurant()
+
     const reviewComponent = [];
     for (let review of allReviews) {
         reviewComponent.push(<div>
