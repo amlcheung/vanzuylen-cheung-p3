@@ -35,10 +35,9 @@ function updateRestaurantByRestaurantId(id, updatedName, updatedCuisine, updated
         ).exec();
 }
 
-function deleteRestaurant(restaurantName, owner) {
-
-    // delete reviews first, then delete restaurant entry
-    return RestaurantModel.findOneAndDelete({name: restaurantName}, {owner: owner}).exec();
+// Deleted restaurant using the restaurant id
+function deleteRestaurant(id) {
+    return RestaurantModel.findByIdAndDelete(id).exec();
 }
 
 module.exports = {

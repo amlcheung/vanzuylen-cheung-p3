@@ -18,6 +18,10 @@ function getAllReviews() {
     return ReviewModel.find().exec();
 }
 
+function getReview(id) {
+    return ReviewModel.findById(id).exec();
+}
+
 function getReviewByRestaurantId(RestaurantId) {
     return ReviewModel.find({
         restaurantId: RestaurantId
@@ -44,6 +48,7 @@ module.exports = {
     createReview,
     getReviewByUsername,
     getAllReviews,
+    getReview,
     getReviewByRestaurantId,
     updateReviewByReviewId,
     deleteReviewByRestaurantId,

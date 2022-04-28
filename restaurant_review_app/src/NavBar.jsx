@@ -29,7 +29,6 @@ export default function NavBar(props) {
             {username} is logged in
             <button onClick={logout}>Logout</button>
             <a href="/restaurantEntry"><h1>Create a Restaurant</h1></a>
-            <a href="/restaurantEntry"><h1>Delete your Restaurant Entries</h1></a>
         </h1>)
     }
 

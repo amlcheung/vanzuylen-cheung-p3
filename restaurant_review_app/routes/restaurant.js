@@ -112,9 +112,9 @@ router.put('/:restaurantId', function(request, response) {
 })
 
 router.delete('/:restaurantId', function(request, response) {
-    const restaurantName = request.params.name;
+    const restaurantId = request.params.restaurantId;
 
-    return RestaurantModel.deleteRestaurant(restaurantName)
+    return RestaurantModel.deleteRestaurant(restaurantId)
     .then(dpResponse => {
         response.status(200).send(dpResponse);
     })

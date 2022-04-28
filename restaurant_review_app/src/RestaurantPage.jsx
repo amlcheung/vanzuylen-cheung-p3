@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import { useParams,  useNavigate } from 'react-router';
 
 export default function RestaurantPage(props) {
 
@@ -10,6 +10,7 @@ export default function RestaurantPage(props) {
     const [review, setReview] = useState(null);
     const [allReviews, setAllReviews] = useState([]);
     const params = useParams();
+    const navigate = useNavigate();
 
     // Checks if user is logged in 
     useEffect(function() {
@@ -22,7 +23,7 @@ export default function RestaurantPage(props) {
     useEffect(function() {
         Axios.get('/api/restaurant/' + params.restaurantId)
             .then(response => setRestaurant(response.data))
-            .catch(error => console.log(error));
+            .catch(error => {console.log(error)});
         setRestaurantId(params.restaurantId);
     },[]);
 
@@ -60,6 +61,36 @@ export default function RestaurantPage(props) {
         })
         .catch(error => console.log(error));
     }
+
+    // Edits a review
+    function editReview(reviewId) {
+        // add code here
+        console.log(reviewId);
+        Axios.get('/api/review/' + reviewId)
+        .then(function(response) {
+           // console.log("Review")
+            //console.log(response.data)
+            setReview(response.data)
+        })
+        .catch(error => console.log(error));
+     
+    }
+
+    // Deletes a restaurant from the db and navigates back to the homepage
+    function deleteRestaurant() {
+        const restaurantId = restaurant._id;
+        console.log(restaurantId);
+        console.log(restaurant._id);
+        Axios.delete('/api/restaurant/'+ restaurantId)
+            .then(response => {
+                console.log("Deleted Restaurant")
+                console.log(response.data)
+                navigate('/')// needs to navigate to home
+                navigate(0) // refreshes the page
+            })
+            .catch(error => console.log(error));
+    }
+
     getReviewsForRestaurant()
     //useEffect(() => getReviewsForRestaurant(), [])
     // Creates the review Compnent
@@ -72,6 +103,7 @@ export default function RestaurantPage(props) {
                 <h5>User: {review.owner}</h5>
                 <h5>Restaurant Id: {review.restaurantId}</h5>
                 <button id = "delete" onClick={()=>deleteReview(review._id)}>Delete this Review</button>
+                <button id = "edit" onClick={()=>editReview(review._id)}>Edit this Review</button>
             </div>)
         } else {
         reviewComponent.push(<div>
@@ -83,15 +115,15 @@ export default function RestaurantPage(props) {
         }
     }
 
-
     if (!restaurant) {
         return (<div>
             Restaurant loading...
         </div>)
+        
     }
 
-    // if logged in, return this
-    if (username) {
+    // if logged in and created restaurant, return this
+    if (username && username == restaurant.owner) {
         return ( 
         <div>
             <h1>
@@ -106,6 +138,12 @@ export default function RestaurantPage(props) {
             <h2>
                ID: {restaurant._id}
             </h2>
+            <h2>
+               Owner: {restaurant.owner}
+            </h2>
+            <button id = "delete-restaurant" onClick={deleteRestaurant}>
+                Delete Restaurant
+            </button>
             <h5>
                 Review this Restaurant:
             </h5>
@@ -115,9 +153,36 @@ export default function RestaurantPage(props) {
             </button>
             {reviewComponent}
         </div>
-        )
-
-        
+        ) 
+        // logged in but did not create the restaurant
+    } else if (username && username == restaurant.owner) {
+        return ( 
+        <div>
+            <h1>
+                Restaurant: {restaurant.name} 
+            </h1>
+            <h2>
+                Cuisine: {restaurant.cuisine}
+            </h2>
+            <h2>
+                Michilen Stars: {restaurant.rating}
+            </h2>
+            <h2>
+               ID: {restaurant._id}
+            </h2>
+            <h2>
+               Owner: {restaurant.owner}
+            </h2>
+            <h5>
+                Review this Restaurant:
+            </h5>
+            <textarea id= "theReview" rows = "10" cols = "60" onChange={e => setReview(e.target.value)}></textarea>
+            <button id = "create" onClick={createReview}>
+                Submit Review
+            </button>
+            {reviewComponent}
+        </div>
+        ) 
     }
 
     // if not logged in 
@@ -134,6 +199,9 @@ export default function RestaurantPage(props) {
             </h2>
             <h2>
                ID: {restaurant._id}
+            </h2>
+            <h2>
+               Owner: {restaurant.owner}
             </h2>
             {reviewComponent}
 

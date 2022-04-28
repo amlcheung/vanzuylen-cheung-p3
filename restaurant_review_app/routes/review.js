@@ -2,6 +2,7 @@ const express = require('express');
 const ReviewModel = require('./model/review.model');
 const jwt = require('jsonwebtoken');
 const auth_middleware = require('./middleware/auth_middleware');
+const { get } = require('./user');
 const router = express.Router();
 
 // Gets all reviews
@@ -14,6 +15,7 @@ router.get('/', function(request, response) {
             response.status(400).send(error)
         })
 })
+
 
 // Gets reviews for a restaurant
 router.get('/:restaurantId', function(request, response) {
@@ -41,6 +43,17 @@ router.get('/:owner', function(request, response) {
         .catch(error => {
             response.status(400).send(error);
         })
+})
+
+router.get('/:reviewId', function(request, response){
+    const reviewId = request.params.reviewId;
+    return ReviewModel.getReview(reviewId)
+    .then(getReview =>{
+        response.status(200).send("here")
+    }).catch(error => {
+        response.status(400).send(error);
+    })
+
 })
 
 router.post('/', auth_middleware, function(request, response) {
