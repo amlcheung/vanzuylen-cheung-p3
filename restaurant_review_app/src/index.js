@@ -16,7 +16,7 @@ import RestaurantPage from './RestaurantPage';
       <Route path={"/"} element={<App />}/>
       <Route path={"/login"} element={<Login />} />
       <Route path={"/createUser"} element={<CreateUser />} />
-      <Route path={"/restaurantEntry"} element={<RestaurantEntry />}/>
+      <Route path={"/restaurantEntry/:restaurantId"} element={<RestaurantEntry />}/>
       <Route path={"/restaurant/:restaurantId"} element={<RestaurantPage />}/>
     </Routes>
    </BrowserRouter>

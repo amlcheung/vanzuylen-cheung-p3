@@ -28,7 +28,7 @@ export default function NavBar(props) {
             <a href='/'><h1>Home</h1></a>
             {username} is logged in
             <button onClick={logout}>Logout</button>
-            <a href="/restaurantEntry"><h1>Create a Restaurant</h1></a>
+            <a href="/restaurantEntry/new"><h1>Create a Restaurant</h1></a>
         </h1>)
     }
 

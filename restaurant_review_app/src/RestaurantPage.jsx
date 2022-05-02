@@ -63,17 +63,13 @@ export default function RestaurantPage(props) {
     }
 
     // Edits a review
-    function editReview(reviewId) {
-        // add code here
+    function editReview(reviewId, review) {
+        console.log("Editing Review");
         console.log(reviewId);
-        Axios.get('/api/review/' + reviewId)
-        .then(function(response) {
-           // console.log("Review")
-            //console.log(response.data)
-            setReview(response.data)
-        })
-        .catch(error => console.log(error));
-     
+        console.log(review);
+        const reviewInput = document.getElementById('theReview');
+        reviewInput.value = review;
+        deleteReview(reviewId);
     }
 
     // Deletes a restaurant from the db and navigates back to the homepage
@@ -91,8 +87,15 @@ export default function RestaurantPage(props) {
             .catch(error => console.log(error));
     }
 
+    // Edits a restaurant
+    function editRestaurant() {
+        navigate('/restaurantEntry/' + params.restaurantId)// navigates to the restaurant entry form
+        navigate(0) // refreshes the page
+    }
+
     getReviewsForRestaurant()
     //useEffect(() => getReviewsForRestaurant(), [])
+
     // Creates the review Compnent
     const reviewComponent = [];
     for (let review of allReviews) {
@@ -103,7 +106,7 @@ export default function RestaurantPage(props) {
                 <h5>User: {review.owner}</h5>
                 <h5>Restaurant Id: {review.restaurantId}</h5>
                 <button id = "delete" onClick={()=>deleteReview(review._id)}>Delete this Review</button>
-                <button id = "edit" onClick={()=>editReview(review._id)}>Edit this Review</button>
+                <button id = "edit" onClick={()=>editReview(review._id, review.review)}>Edit this Review</button>
             </div>)
         } else {
         reviewComponent.push(<div>
@@ -119,11 +122,10 @@ export default function RestaurantPage(props) {
         return (<div>
             Restaurant loading...
         </div>)
-        
     }
 
     // if logged in and created restaurant, return this
-    if (username && username == restaurant.owner) {
+    if (username && username === restaurant.owner) {
         return ( 
         <div>
             <h1>
@@ -144,6 +146,9 @@ export default function RestaurantPage(props) {
             <button id = "delete-restaurant" onClick={deleteRestaurant}>
                 Delete Restaurant
             </button>
+            <button id = "edit-restaurant" onClick={editRestaurant}>
+                Edit Restaurant
+            </button>
             <h5>
                 Review this Restaurant:
             </h5>
@@ -155,7 +160,7 @@ export default function RestaurantPage(props) {
         </div>
         ) 
         // logged in but did not create the restaurant
-    } else if (username && username == restaurant.owner) {
+    } else if (username) {
         return ( 
         <div>
             <h1>

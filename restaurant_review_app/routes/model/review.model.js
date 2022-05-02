@@ -8,20 +8,15 @@ function createReview(review) {
     return ReviewModel.create(review);
 }
 
-function getReviewByUsername(username) {
-    return ReviewModel.find({
-        owner: username
-    }).exec();
-}
-
 function getAllReviews() {
     return ReviewModel.find().exec();
 }
 
-function getReview(id) {
-    return ReviewModel.findById(id).exec();
+/*
+function getReviewById(id) {
+    return ReviewModel.find(id).exec();
 }
-
+*/
 function getReviewByRestaurantId(RestaurantId) {
     return ReviewModel.find({
         restaurantId: RestaurantId
@@ -46,9 +41,8 @@ function deleteReviewByReviewId(id) {
 
 module.exports = {
     createReview,
-    getReviewByUsername,
     getAllReviews,
-    getReview,
+   // getReviewById,
     getReviewByRestaurantId,
     updateReviewByReviewId,
     deleteReviewByRestaurantId,
