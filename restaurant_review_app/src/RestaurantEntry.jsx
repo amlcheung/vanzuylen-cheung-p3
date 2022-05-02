@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import Axios from 'axios';
-import { useParams, useNavigate} from 'react-router';
+import { useNavigate, useParams} from 'react-router';
+import './RestaurantEntry.css';
 
 export default function ReviewEntry() {
 
@@ -18,8 +19,8 @@ export default function ReviewEntry() {
             .catch(error => console.log("User is not logged in"));
     }, [])
 
-     // Gets the restaurant and sets the restaurant Id
-     useEffect(function() {
+    // Gets the restaurant and sets the restaurant Id
+    useEffect(function() {
         const restaurantInput = document.getElementById('restaurant');
         const cuisineInput = document.getElementById('cuisine');
         const ratingInput = document.getElementById('rating');
@@ -41,7 +42,6 @@ export default function ReviewEntry() {
          }
     },[]);
 
-    // Creates a new restaurant
     function createNewRestaurant() {
         Axios.post('/api/restaurant/', {restaurantName, cuisine, rating, username})
             .then(response => {
@@ -52,8 +52,8 @@ export default function ReviewEntry() {
             .catch(error => console.log(error));
     }
 
-    // Updates the restaurant
-    function updateRestaurant() {
+     // Updates the restaurant
+     function updateRestaurant() {
         const restaurantId = params.restaurantId;
         Axios.put('/api/restaurant/', {restaurantId, restaurantName, cuisine, rating, username})
             .then(response => {
@@ -64,51 +64,57 @@ export default function ReviewEntry() {
             .catch(error => console.log(error));
     }
 
-    if (params.restaurantId == 'new'){
-    // if the restaurant is new, then create a new restaurant when the buttom is submitted    
-    return (
-        <div>
-            <h5>
-                Restaurant Name:
-            </h5>
-            <input id = 'restaurant' value={restaurantName} onChange={e => setRestaurantName(e.target.value)} />
-            <h5>
-                Cuisine:
-            </h5>
-            <input id = 'cuisine' value={cuisine} onChange={e => setCuisine(e.target.value)} />
-            <h5>
-                Michelin Stars:
-            </h5>
-            <input id = 'rating' value={rating} onChange={e => setRating(e.target.value)} />
-            <button onClick={createNewRestaurant}>
-                Submit
-            </button>
-
-        </div>
-
-    )  
+    if (params.restaurantId == 'new') {
+    // if the restaurant is new, then create a new restaurant when the buttom is submitted   
+        return (
+            <div>
+                <div className="header">Create a New Restaurant</div>
+                <div className="new-restaurant-form">
+                    <div>
+                        Restaurant Name:
+                    </div>
+                    <input id = 'restaurant' className="input-box" value={restaurantName} onChange={e => setRestaurantName(e.target.value)} />
+                    <div>
+                        Cuisine:
+                    </div>
+                    <input id = 'cuisine' className="input-box" value={cuisine} onChange={e => setCuisine(e.target.value)} />
+                    <div>
+                        Michelin Stars:
+                    </div>
+                    <input id = 'rating' className="input-box" value={rating} onChange={e => setRating(e.target.value)} />
+                    <button className="submit" onClick={createNewRestaurant}>
+                        Submit
+                    </button>
+        
+                </div>
+            </div>
+    
+        )  
     } else {
         // if the restaurant is being edited, then update the restaurant when the button is submitted
         return (
             <div>
-                <h5>
+                <div className="header">Update a Restaurant</div>
+                <div className="new-restaurant-form">
+                <div>
                     Restaurant Name:
-                </h5>
-                <input id = 'restaurant' value={restaurantName} onChange={e => setRestaurantName(e.target.value)} />
-                <h5>
+                </div>
+                <input id = 'restaurant' className="input-box"  value={restaurantName} onChange={e => setRestaurantName(e.target.value)} />
+                <div>
                     Cuisine:
-                </h5>
-                <input id = 'cuisine' value={cuisine} onChange={e => setCuisine(e.target.value)} />
-                <h5>
+                </div>
+                <input id = 'cuisine' className="input-box" value={cuisine} onChange={e => setCuisine(e.target.value)} />
+                <div>
                     Michelin Stars:
-                </h5>
-                <input id = 'rating' value={rating} onChange={e => setRating(e.target.value)} />
-                <button onClick={updateRestaurant}>
+                </div>
+                <input id = 'rating' className="input-box" value={rating} onChange={e => setRating(e.target.value)} />
+                <button className="submit" onClick={updateRestaurant}>
                     Submit
                 </button>
-    
+                </div>
             </div>
+            
     
-        )  
-    }
+        )
+    }   
 }

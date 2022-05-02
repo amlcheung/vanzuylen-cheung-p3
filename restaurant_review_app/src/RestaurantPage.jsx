@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams,  useNavigate } from 'react-router';
+import './App.css';
 
 export default function RestaurantPage(props) {
 
@@ -72,6 +73,13 @@ export default function RestaurantPage(props) {
         deleteReview(reviewId);
     }
 
+    
+    // Edits a restaurant
+    function editRestaurant() {
+        navigate('/restaurantEntry/' + params.restaurantId)// navigates to the restaurant entry form
+        navigate(0) // refreshes the page
+    }
+    
     // Deletes a restaurant from the db and navigates back to the homepage
     function deleteRestaurant() {
         const restaurantId = restaurant._id;
@@ -86,6 +94,7 @@ export default function RestaurantPage(props) {
             })
             .catch(error => console.log(error));
     }
+    
 
     // Edits a restaurant
     function editRestaurant() {
@@ -127,31 +136,29 @@ export default function RestaurantPage(props) {
     // if logged in and created restaurant, return this
     if (username && username === restaurant.owner) {
         return ( 
-        <div>
-            <h1>
-                Restaurant: {restaurant.name} 
-            </h1>
-            <h2>
+        <div className="font-style-restaurants">
+            <div className="restaurant-name">
+                {restaurant.name} 
+            </div>
+            <div className="attribute-name">
                 Cuisine: {restaurant.cuisine}
-            </h2>
-            <h2>
+            </div>
+            <div className="attribute-name">
                 Michilen Stars: {restaurant.rating}
-            </h2>
-            <h2>
+            </div>
+            {/* <div>
                ID: {restaurant._id}
-            </h2>
-            <h2>
+            </div> */}
+            <div className="attribute-name">
                Owner: {restaurant.owner}
-            </h2>
+            </div>
             <button id = "delete-restaurant" onClick={deleteRestaurant}>
                 Delete Restaurant
             </button>
-            <button id = "edit-restaurant" onClick={editRestaurant}>
-                Edit Restaurant
-            </button>
-            <h5>
+            <button onClick={editRestaurant}>Edit Restaurant</button>
+            <div>
                 Review this Restaurant:
-            </h5>
+            </div>
             <textarea id= "theReview" rows = "10" cols = "60" onChange={e => setReview(e.target.value)}></textarea>
             <button id = "create" onClick={createReview}>
                 Submit Review
@@ -162,25 +169,25 @@ export default function RestaurantPage(props) {
         // logged in but did not create the restaurant
     } else if (username) {
         return ( 
-        <div>
-            <h1>
-                Restaurant: {restaurant.name} 
-            </h1>
-            <h2>
+        <div className="font-style-restaurants">
+            <div className="restaurant-name">
+                {restaurant.name} 
+            </div>
+            <div className="attribute-name">
                 Cuisine: {restaurant.cuisine}
-            </h2>
-            <h2>
+            </div>
+            <div className="attribute-name">
                 Michilen Stars: {restaurant.rating}
-            </h2>
-            <h2>
+            </div>
+            {/* <div>
                ID: {restaurant._id}
-            </h2>
-            <h2>
+            </div> */}
+            <div className="attribute-name">
                Owner: {restaurant.owner}
-            </h2>
-            <h5>
+            </div>
+            <div>
                 Review this Restaurant:
-            </h5>
+            </div>
             <textarea id= "theReview" rows = "10" cols = "60" onChange={e => setReview(e.target.value)}></textarea>
             <button id = "create" onClick={createReview}>
                 Submit Review
@@ -192,22 +199,22 @@ export default function RestaurantPage(props) {
 
     // if not logged in 
     return (
-        <div>
-            <h1>
-                Restaurant: {restaurant.name} 
-            </h1>
-            <h2>
+        <div className="font-style-restaurants">
+            <div className="restaurant-name">
+                {restaurant.name} 
+            </div>
+            <div className="attribute-name">
                 Cuisine: {restaurant.cuisine}
-            </h2>
-            <h2>
+            </div>
+            <div className="attribute-name">
                 Michilen Stars: {restaurant.rating}
-            </h2>
-            <h2>
+            </div>
+            {/* <div>
                ID: {restaurant._id}
-            </h2>
-            <h2>
+            </div> */}
+            <div className="attribute-name">
                Owner: {restaurant.owner}
-            </h2>
+            </div>
             {reviewComponent}
 
         </div>

@@ -1,0 +1,49 @@
+.nav-bar-container {
+    display: grid;
+    position: sticky;
+    top: 0%;
+    grid-template-columns: 4fr 1fr 1fr 1fr 2fr;
+    font-size: 8px;
+    color: rgb(29, 28, 28);
+    height: 55px;
+    grid-gap: 10px;
+    background-color: rgb(218, 77, 77);
+    margin-bottom: 20px; 
+    border-bottom: 1px solid grey;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+    border-radius: 25px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.font-style-welcome {
+  font-size: 40px;
+}
+
+.logged-in {
+    font-size: 20px; 
+    font-weight: bold;
+    font-style: italic;
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+
+}
+
+a:link {
+    text-decoration: none;
+    color: rgb(29, 28, 28);
+}
+a:visited {
+    text-decoration: underline;
+    color:  rgb(29, 28, 28);
+}
+
+a:hover {
+    text-decoration: underline;
+    font-size: larger;
+}
+
+.logout-button {
+    border-radius: 12px;
+}
