@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
-
+import './App.css';
 
 export default function App() {
 
@@ -21,16 +21,18 @@ export default function App() {
   for(let restaurant of restaurants) {
     console.log(restaurant);
     restaurantComponent.push(<div>
-      <a href={'/restaurant/' + restaurant._id}><h1>{restaurant.name}</h1></a>
-      <h5>Cuisine: {restaurant.cuisine}</h5>
-      <h5>Michilen Stars: {restaurant.rating}</h5>
+      <a href={'/restaurant/' + restaurant._id}><div className="restaurant-name">{restaurant.name}</div></a>
+      <div className="attribute-name">Cuisine: {restaurant.cuisine}</div>
+      <div className="attribute-name review-spacing">Michilen Stars: {restaurant.rating}</div>
       </div>)
 
   }
 
   return (
-    <div>Welcome To Restaurant Review App
-      {restaurantComponent}
-    </div>
+    <body>
+        <div className="font-style-restaurants">
+          {restaurantComponent}
+        </div>
+    </body>
   );
 }

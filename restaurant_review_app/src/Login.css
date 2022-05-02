@@ -1,0 +1,34 @@
+.font-style-loggin {
+    display: grid;
+    position: relative;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: rgb(29, 28, 28);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.loggin-button {
+    margin: 15px;
+}
+
+.new-user-loggin-button {
+    background-color: rgb(218, 77, 77);
+    border-radius: 12px;
+}
+
+.input-box {
+    margin-bottom: 10px;
+}
+
+.header {
+    font-size: 30px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.submit {
+    background-color: rgb(218, 77, 77);
+    border-radius: 12px;
+  }

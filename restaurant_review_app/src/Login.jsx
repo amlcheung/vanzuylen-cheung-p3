@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router';
+import './Login.css';
 
 export default function Login(props) {
 
@@ -19,16 +20,17 @@ export default function Login(props) {
     }
 
     return (
-        <div>
-            <h5>
+        <div className="font-style-loggin">
+            <div className="header">Login</div>
+            <div>
                 Username
-            </h5>
-            <input value={username} onChange={e => setUsername(e.target.value)} />
-            <h5>
+            </div>
+            <input className="input-box" value={username} onChange={e => setUsername(e.target.value)} />
+            <div>
                 Password
-            </h5>
-            <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
-            <button onClick={createNewUser}>
+            </div>
+            <input className="input-box" type='password' value={password} onChange={e => setPassword(e.target.value)} />
+            <button className="submit" onClick={createNewUser}>
                 Login
             </button>
         </div>

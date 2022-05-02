@@ -86,23 +86,24 @@ router.post('/', auth_middleware, function(request, response) {
 
 // update a restaurant attributes: name, cuisine and rating. Will keep the
 // original info for an attribute if the user doesn't make any changes to it
-router.put('/:restaurantId', function(request, response) {
-    const id = request.params.restaurantId;
-    let Name = request.body.name;
-    let Cuisine = request.body.cuisine;
-    let Rating = parseInt(request.body.rating);
+router.put('/', function(request, response) {
+    const id = request.body.restaurantId;
+    const name = request.body.restaurantName;
+    const cuisine = request.body.cuisine;
+    const rating = parseInt(request.body.rating);
+    const owner = request.body.username;
 
-    if (Name === undefined) {
-        Name = request.name;
+    if (name === undefined) {
+        name = request.name;
     }
-    if (Cuisine === undefined) {
-        Cuisine = request.cuisine;
+    if (cuisine === undefined) {
+        cuisine = request.cuisine;
     }
-    if (Rating === undefined) {
-        Rating = request.rating;
+    if (rating === undefined) {
+        rating = request.rating;
     }
     
-    return RestaurantModel.updateRestaurantByRestaurantId(id, Name, Cuisine, Rating)
+    return RestaurantModel.updateRestaurantByRestaurantId(id, name, cuisine, rating, owner)
         .then(dbResponse => {
             response.status(200).send(dbResponse);
         })
@@ -121,9 +122,6 @@ router.delete('/:restaurantId', function(request, response) {
     .catch(error => {
         response.status(400).send(error);
     })
-
-
-
 })
 
 module.exports = router;

@@ -24,36 +24,11 @@ router.get('/:restaurantId', function(request, response) {
 
     return ReviewModel.getReviewByRestaurantId(restaurantId)
         .then(reviews => {
-                response.status(200).send(reviews);
+            response.status(200).send(reviews);
         })
         .catch(error => {
             response.status(400).send(error);
         })
-})
-
-// Get reviews written by an owner
-router.get('/:owner', function(request, response) {
-
-    const owner = request.params.owner
-
-    return ReviewModel.getReviewByUsername(owner)
-        .then(reviewsOwned => {
-                response.status(200).send(reviewsOwned);
-        })
-        .catch(error => {
-            response.status(400).send(error);
-        })
-})
-
-router.get('/:reviewId', function(request, response){
-    const reviewId = request.params.reviewId;
-    return ReviewModel.getReview(reviewId)
-    .then(getReview =>{
-        response.status(200).send("here")
-    }).catch(error => {
-        response.status(400).send(error);
-    })
-
 })
 
 router.post('/', auth_middleware, function(request, response) {

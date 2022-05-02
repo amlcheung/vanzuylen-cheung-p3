@@ -29,9 +29,9 @@ function getRestaurantByName(name) {
     }).exec();
 }
 
-function updateRestaurantByRestaurantId(id, updatedName, updatedCuisine, updatedRating) {
+function updateRestaurantByRestaurantId(id, updatedName, updatedCuisine, updatedRating, updatedUser) {
     return RestaurantModel.findByIdAndUpdate(id, {
-        "$set": {"name": updatedName, "cuisine": updatedCuisine, "rating": updatedRating}}
+        "$set": {"name": updatedName, "cuisine": updatedCuisine, "rating": updatedRating, "owner": updatedUser}}
         ).exec();
 }
 

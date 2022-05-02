@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router';
+import './NavBar.css';
 
 export default function NavBar(props) {
 
@@ -24,16 +25,18 @@ export default function NavBar(props) {
     }
 
     if (username) {
-        return (<h1>
+        return (<div className="nav-bar-container">
+            <div className="font-style-welcome">~ Restaurant Review App ~</div>
             <a href='/'><h1>Home</h1></a>
-            {username} is logged in
-            <button onClick={logout}>Logout</button>
-            <a href="/restaurantEntry"><h1>Create a Restaurant</h1></a>
-        </h1>)
+            <div className="logged-in">{username}</div>
+            <button className="logout-button" onClick={logout}>Logout</button>
+            <a href="/restaurantEntry/new"><h1>Create a Restaurant</h1></a>
+        </div>)
     }
 
     return (
-        <div>
+        <div className="nav-bar-container">
+            <div className="font-style-welcome">~ Restaurant Review App ~</div>
              <a href='/'><h1>Home</h1></a>
              <a href='/login'><h1>Login</h1></a>
              <a href='/createUser'><h1>Create an Account</h1></a>
