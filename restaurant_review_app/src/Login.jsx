@@ -21,17 +21,17 @@ export default function Login(props) {
 
     return (
         <div className="font-style-loggin">
-            <div className="header">Login</div>
+            <div className="header">login</div>
             <div>
-                Username
+                username
             </div>
             <input className="input-box" value={username} onChange={e => setUsername(e.target.value)} />
             <div>
-                Password
+                password
             </div>
             <input className="input-box" type='password' value={password} onChange={e => setPassword(e.target.value)} />
             <button className="submit" onClick={createNewUser}>
-                Login
+                login
             </button>
         </div>
 

@@ -68,22 +68,22 @@ export default function ReviewEntry() {
     // if the restaurant is new, then create a new restaurant when the buttom is submitted   
         return (
             <div>
-                <div className="header">Create a New Restaurant</div>
+                <div className="header">create a new restaurant</div>
                 <div className="new-restaurant-form">
                     <div>
-                        Restaurant Name:
+                        restaurant name
                     </div>
                     <input id = 'restaurant' className="input-box" value={restaurantName} onChange={e => setRestaurantName(e.target.value)} />
                     <div>
-                        Cuisine:
+                        cuisine
                     </div>
                     <input id = 'cuisine' className="input-box" value={cuisine} onChange={e => setCuisine(e.target.value)} />
                     <div>
-                        Michelin Stars:
+                        michelin stars
                     </div>
                     <input id = 'rating' className="input-box" value={rating} onChange={e => setRating(e.target.value)} />
                     <button className="submit" onClick={createNewRestaurant}>
-                        Submit
+                        submit
                     </button>
         
                 </div>
@@ -97,19 +97,19 @@ export default function ReviewEntry() {
                 <div className="header">Update a Restaurant</div>
                 <div className="new-restaurant-form">
                 <div>
-                    Restaurant Name:
+                    restaurant name
                 </div>
                 <input id = 'restaurant' className="input-box"  value={restaurantName} onChange={e => setRestaurantName(e.target.value)} />
                 <div>
-                    Cuisine:
+                    cuisine
                 </div>
                 <input id = 'cuisine' className="input-box" value={cuisine} onChange={e => setCuisine(e.target.value)} />
                 <div>
-                    Michelin Stars:
+                    michelin stars
                 </div>
                 <input id = 'rating' className="input-box" value={rating} onChange={e => setRating(e.target.value)} />
                 <button className="submit" onClick={updateRestaurant}>
-                    Submit
+                    submit
                 </button>
                 </div>
             </div>

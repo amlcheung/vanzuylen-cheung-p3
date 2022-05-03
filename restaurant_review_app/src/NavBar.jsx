@@ -26,27 +26,20 @@ export default function NavBar(props) {
 
     if (username) {
         return (<div className="nav-bar-container">
-            <div className="font-style-welcome">~ Restaurant Review App ~</div>
-            <a href='/'><h1>Home</h1></a>
-<<<<<<< HEAD
-            {username} is logged in
-            <button onClick={logout}>Logout</button>
-            <a href="/restaurantEntry/new"><h1>Create a Restaurant</h1></a>
-        </h1>)
-=======
-            <div className="logged-in">{username}</div>
-            <button className="logout-button" onClick={logout}>Logout</button>
-            <a href="/restaurantEntry/new"><h1>Create a Restaurant</h1></a>
+            <div className="font-style-welcome">restaurant reviews</div>
+            <a href='/'><h1>home</h1></a>
+            <a href="/restaurantEntry/new"><h1>new restaurant</h1></a>
+            <div className="logged-in">hi, {username}!</div>
+            <button className="nav-button" onClick={logout}>logout</button>
         </div>)
->>>>>>> 498e7c0b289b2cdb331f6b2f3748906733464692
     }
 
     return (
         <div className="nav-bar-container">
-            <div className="font-style-welcome">~ Restaurant Review App ~</div>
-             <a href='/'><h1>Home</h1></a>
-             <a href='/login'><h1>Login</h1></a>
-             <a href='/createUser'><h1>Create an Account</h1></a>
+            <div className="font-style-welcome">restaurant review</div>
+             <a href='/'><h1>home</h1></a>
+             <a href='/login'><h1>login</h1></a>
+             <a href='/createUser'><h1>create account</h1></a>
         </div>
     )
 

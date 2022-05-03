@@ -110,19 +110,17 @@ export default function RestaurantPage(props) {
     for (let review of allReviews) {
         if (review.owner === username){
             reviewComponent.push(<div>
-                <h5>Date: {review.reviewDate}</h5>
-                <h5>{review.review}</h5>
-                <h5>User: {review.owner}</h5>
-                <h5>Restaurant Id: {review.restaurantId}</h5>
-                <button id = "delete" onClick={()=>deleteReview(review._id)}>Delete this Review</button>
-                <button id = "edit" onClick={()=>editReview(review._id, review.review)}>Edit this Review</button>
+                <h5 className = 'review-style border-top'>date: {review.reviewDate}</h5>
+                <h5 className = 'review-style'>user: {review.owner}</h5>
+                <h5 className = 'review-style' >{review.review}</h5>
+                <button className = 'mod-button' id = "delete" onClick={()=>deleteReview(review._id)}>delete review</button>
+                <button className = 'mod-button' id = "edit" onClick={()=>editReview(review._id, review.review)}>edit review</button>
             </div>)
         } else {
         reviewComponent.push(<div>
-            <h5>Date: {review.reviewDate}</h5>
+            <h5 className = 'border-top'>Date: {review.reviewDate}</h5>
             <h5>{review.review}</h5>
             <h5>User: {review.owner}</h5>
-            <h5>Restaurant Id: {review.restaurantId}</h5>
         </div>)
         }
     }
@@ -149,19 +147,19 @@ export default function RestaurantPage(props) {
             {/* <div>
                ID: {restaurant._id}
             </div> */}
-            <div className="attribute-name">
+            <div className="attribute-name border">
                Owner: {restaurant.owner}
             </div>
-            <button id = "delete-restaurant" onClick={deleteRestaurant}>
-                Delete Restaurant
+            <button className = 'mod-button' id = "delete-restaurant" onClick={deleteRestaurant}>
+                delete restaurant
             </button>
-            <button onClick={editRestaurant}>Edit Restaurant</button>
+            <button className = 'mod-button' onClick={editRestaurant}>edit restaurant</button>
             <div>
-                Review this Restaurant:
+                review restaurant:
             </div>
             <textarea id= "theReview" rows = "10" cols = "60" onChange={e => setReview(e.target.value)}></textarea>
-            <button id = "create" onClick={createReview}>
-                Submit Review
+            <button className = 'mod-button' id = "create" onClick={createReview}>
+                submit review
             </button>
             {reviewComponent}
         </div>
@@ -182,15 +180,15 @@ export default function RestaurantPage(props) {
             {/* <div>
                ID: {restaurant._id}
             </div> */}
-            <div className="attribute-name">
+            <div className="attribute-name border">
                Owner: {restaurant.owner}
             </div>
             <div>
                 Review this Restaurant:
             </div>
             <textarea id= "theReview" rows = "10" cols = "60" onChange={e => setReview(e.target.value)}></textarea>
-            <button id = "create" onClick={createReview}>
-                Submit Review
+            <button className = 'mod-button' id = "create" onClick={createReview}>
+                submit review
             </button>
             {reviewComponent}
         </div>
@@ -212,7 +210,7 @@ export default function RestaurantPage(props) {
             {/* <div>
                ID: {restaurant._id}
             </div> */}
-            <div className="attribute-name">
+            <div className="attribute-name border">
                Owner: {restaurant.owner}
             </div>
             {reviewComponent}

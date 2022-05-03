@@ -1,11 +1,13 @@
 body {
-  background-color: rgb(248, 244, 229);
+  background-color: whitesmoke;
+  align-items: center;
+  justify-content: center;
 }
 
 .font-style-restaurants {
   display: grid;
-  font-family: 'Times New Roman', Times, serif;
-  color: rgb(29, 28, 28);
+  font-family: 'Arial';
+  color:rgb(40,40,40);
   text-align: center;
   position: sticky;
 }
@@ -17,9 +19,96 @@ body {
 }
 
 .attribute-name {
-  font-size: 20px;
+  font-size: 25px;
 }
 
-.review-spacing {
-  margin-bottom: 40px;
+.review-border{
+  border: 3px rgb(40,40,40) solid;
+}
+
+.mod-button {
+  width: 125px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: auto;
+  background-color: rgb(218, 77, 77);
+  border:rgb(218, 77, 77) solid 2px;
+  color: white;
+  border-radius: 12px;
+  font-style: 'Arial';
+  height: 40px;
+  min-width: auto;
+  max-width: auto;
+  font-size: 15px;
+  transition-duration: 0.2s;
+}
+
+.mod-button:hover {
+  background-color: white;
+  color: rgb(218, 77, 77);
+  border:rgb(218, 77, 77) solid 2px;
+}
+
+.restaurant-name:hover {
+  color: rgb(218, 77, 77);
+}
+
+textarea{
+  width: 450px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.border {
+  border-bottom: 2px solid white;
+  width: auto;
+}
+
+.border-top {
+  border-top: 2px solid white;
+  margin-top: 5px;
+}
+
+.review-style{
+  font-size: 18px;
+  margin: 10px;
+  font-weight: 100;
+}
+
+.margin{
+  margin-bottom: 30px;
+}
+
+
+@media (max-width: 450px){
+  .restaurant-name {
+    font-size: 40px;
+  }
+  .attribute-name {
+    font-size: 20px;
+  }
+  textarea{
+    width: 300px;
+  }
+  .border {
+    border-bottom: none;
+    width: none;
+  }
+  .border-top {
+    border-top: none;
+    margin-top: none;
+  }
+  .mod-button {
+    width: 100px;
+    height: 30px;
+    min-width: auto;
+    max-width: auto;
+    font-size: 12px;
+    transition-duration: 0.2s;
+  }
 }

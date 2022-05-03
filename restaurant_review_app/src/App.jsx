@@ -21,11 +21,10 @@ export default function App() {
   for(let restaurant of restaurants) {
     console.log(restaurant);
     restaurantComponent.push(<div>
-      <a href={'/restaurant/' + restaurant._id}><div className="restaurant-name">{restaurant.name}</div></a>
-      <div className="attribute-name">Cuisine: {restaurant.cuisine}</div>
-      <div className="attribute-name review-spacing">Michilen Stars: {restaurant.rating}</div>
+      <a href={'/restaurant/' + restaurant._id}><div className="restaurant-name font-style-restaurants">{restaurant.name}</div></a>
+      <div className="attribute-name font-style-restaurants">Cuisine: {restaurant.cuisine}</div>
+      <div className="attribute-name font-style-restaurants margin">Michelin Stars: {restaurant.rating}</div>
       </div>)
-
   }
 
   return (

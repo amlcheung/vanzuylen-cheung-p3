@@ -24,18 +24,18 @@ export default function CreateUser(props) {
 
     return (
         <div>
-            <div className="header">Create a new Account</div>
+            <div className="header">create a new account</div>
             <div className="font-style-loggin">
                 <div>
-                    Username
+                    username
                 </div>
                 <input className="input-box" value={username} onChange={e => setUsername(e.target.value)} />
                 <div>
-                    Password
+                    password
                 </div>
                 <input className="input-box" type='password' value={password} onChange={e => setPassword(e.target.value)} />
-                <button className="new-user-loggin-button" onClick={createNewUser}>
-                    Create Your Account
+                <button className="submit" onClick={createNewUser}>
+                    create your account
                 </button>
             </div>
         </div>
