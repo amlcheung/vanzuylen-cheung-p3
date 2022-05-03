@@ -24,7 +24,12 @@ export default function RestaurantPage(props) {
     useEffect(function() {
         Axios.get('/api/restaurant/' + params.restaurantId)
             .then(response => setRestaurant(response.data))
-            .catch(error => {console.log(error)});
+            .catch(error => {
+                if (error.response.status === 404) {
+                navigate("/");
+                navigate("0");
+                }
+                });
         setRestaurantId(params.restaurantId);
     },[]);
 
